@@ -1,0 +1,14 @@
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+
+name: "Update Pull Request Approval Labels"
+description: "Sets specific labels on nixpkgs pull requests that were reviewed and approved."
+inputs:
+  pr-number:
+    description: "What pull request to update"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "--single_pr"
+    - ${{ inputs.pr-number }}
